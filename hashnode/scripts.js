@@ -81,7 +81,7 @@ async function fetchUserPostBySlug(slug) {
       apiEndpoint,
       {
         query,
-        variables,response
+        variables,
       },
       {
         headers: {
@@ -158,6 +158,7 @@ async function publish(metaData, blogContent, lastModified, skipLastModifiedChec
   if (success && post) {
     if (!(lastModified && new Date(lastModified) > new Date(post.updatedAt)) && !skipLastModifiedCheck) {
       // No need to update
+      console.log("skip the update", post.id);
       return
     }
     const postInput = {
