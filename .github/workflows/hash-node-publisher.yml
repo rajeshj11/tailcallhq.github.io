@@ -23,8 +23,8 @@ jobs:
         run: npm install
 
       - name: Run script the hashnode publisher script
-        run: node hashnode/scripts.js'
-        shell: /usr/bin/bash -e {0}
+        run: |
+          node hashnode/scripts.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HASH_NODE_API_KEY: ${{ secrets.HASH_NODE_API_KEY }}
