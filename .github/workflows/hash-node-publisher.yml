@@ -24,7 +24,7 @@ jobs:
         run: npm install
 
       - name: Run script with GITHUB_TOKEN
-        run: node hashnode/scripts.js --skipLastModifiedCheck true --fileName '["N+1.md", "playground.md"]'
+        run: node hashnode/scripts.js'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HASH_NODE_API_KEY: ${{ secrets.HASH_NODE_API_KEY }}
