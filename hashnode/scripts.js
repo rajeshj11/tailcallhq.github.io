@@ -37,7 +37,7 @@ const argv = yargs(hideBin(process.argv))
 const hashnodeApiKey = process.env.HASH_NODE_API_KEY || "d8deff01-f397-48d9-9b02-90e16daf98c1" // Replace with your actual key
 const blogPostsDir = path.join(__dirname, "../docs")
 const apiEndpoint = process.env.HASH_NODE_ENDPOINT || "https://gql.hashnode.com/"
-const publicationId = process.env.PUBLICATION_ID || "6685759a459d4806eb134eb5"
+const publicationId = process.env.HASH_NODE_PUBLICATION_ID || "6685759a459d4806eb134eb5"
 const githubBaseUrl = "https://raw.githubusercontent.com/tailcallhq/tailcallhq.github.io/develop/static/images/docs/"
 const pathRegex = /\.\.\/static\/images\/docs\//g
 
