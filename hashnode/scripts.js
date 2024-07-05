@@ -34,10 +34,10 @@ const argv = yargs(hideBin(process.argv))
   })
   .help().argv
 
-const hashnodeApiKey = process.env.HASH_NODE_API_KEY || "d8deff01-f397-48d9-9b02-90e16daf98c12" // Replace with your actual key
+const hashnodeApiKey = process.env.HASH_NODE_API_KEY || "d8deff01-f397-48d9-9b02-90e16daf98c1" // Replace with your actual key
 const blogPostsDir = path.join(__dirname, "../docs")
-const apiEndpoint = process.env.HASH_NODE_ENDPOINT || "https://gql.hashnode.com2/"
-const publicationId = process.env.PUBLICATION_ID || "6685759a459d4806eb134eb52"
+const apiEndpoint = process.env.HASH_NODE_ENDPOINT || "https://gql.hashnode.com/"
+const publicationId = process.env.PUBLICATION_ID || "6685759a459d4806eb134eb5"
 const githubBaseUrl = "https://raw.githubusercontent.com/tailcallhq/tailcallhq.github.io/develop/static/images/docs/"
 const pathRegex = /\.\.\/static\/images\/docs\//g
 
@@ -158,6 +158,7 @@ async function publish(metaData, blogContent, lastModified, skipLastModifiedChec
   if (success && post) {
     if (!(lastModified && new Date(lastModified) > new Date(post.updatedAt)) && !skipLastModifiedCheck) {
       // No need to update
+      console.log("skip the update", post.id)
       return
     }
     const postInput = {
@@ -222,7 +223,7 @@ async function publish(metaData, blogContent, lastModified, skipLastModifiedChec
     }
   } catch (error) {
     console.error(`Error publishing article ${metaData.title}: ${error.message}`)
-    if (_.get(response, "response.data")) {
+    if (_.get(error, "response.data")) {
       console.error(JSON.stringify(error.response.data, null, 2))
     }
   }
